@@ -1,3 +1,12 @@
+> This is a fork of [cturra/docker-ntp](https://github.com/cturra/docker-ntp).
+
+## Changelog
+
+* Added NTS (NTP with encryption) - see [blog](https://mpolinowski.github.io/docs/DevOps/Linux/2022-09-15--ntp-over-nts-timeserver/2022-09-21#enable-nts-on-the-server)
+* Modified start-up script `assets/startup.sh` to add NTS configuration to Chrony
+* Modified the Docker Compose file `docker-compose.yml` to bind the TLS certificate/key and modified start-up script into the Chrony container.
+
+
 ## About this container
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/cturra/ntp.svg?logo=docker&label=pulls&style=for-the-badge&color=0099ff&logoColor=ffffff)](https://hub.docker.com/r/cturra/ntp/)

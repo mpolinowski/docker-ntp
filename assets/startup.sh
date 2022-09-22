@@ -68,6 +68,12 @@ done
   echo "makestep 0.1 3"
   echo "rtcsync"
   echo
+  echo "ntsserverkey /opt/privkey.pem"
+  echo "ntsservercert /opt/fullchain.pem"
+  echo "ntsprocesses 3"
+  echo "maxntsconnections 512"
+  echo "ntsdumpdir /var/lib/chrony"
+  echo
   echo "allow all"
 } >> ${CHRONY_CONF_FILE}
 

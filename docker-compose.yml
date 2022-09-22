@@ -1,13 +1,24 @@
 version: '3.9'
 
 services:
-  ntp:
+  chrony:
     build: .
     image: cturra/ntp:latest
-    container_name: ntp
-    restart: always
+    container_name: chrony
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /opt/docker-ntp/assets/startup.sh
+        target: /opt/startup.sh
+      - type: bind
+        source: /etc/letsencrypt/live/my.server.domain/fullchain.pem
+        target: /opt/fullchain.pem
+      - type: bind
+        source: /etc/letsencrypt/live/my.server.domain/privkey.pem
+        target: /opt/privkey.pem
     ports:
       - 123:123/udp
+      - 4460:4460/tcp
     environment:
-      - NTP_SERVERS=time.cloudflare.com
-      - LOG_LEVEL=0
+      - NTP_SERVERS=0.de.pool.ntp.org,time.cloudflare.com,time1.google.com
+      - LOG_LEVEL=1
